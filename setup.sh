@@ -36,8 +36,8 @@ apt-get install ufw -y -q
 apt-get install fail2ban -y -q
 printf "[sshd]\nenabled = true\nbanaction = iptables-multiport" > /etc/fail2ban/jail.local
 systemctl enable fail2ban
-sed -i -e '/^PasswordAuthentication/s/^.$/PasswordAuthentication no/' /etc/ssh/sshd_config
-sed -i -e '/^#MaxAuthTries/s/^.$/MaxAuthTries 2/' /etc/ssh/sshd_config
+sed -i -e '/^PasswordAuthentication/s/^.*$/PasswordAuthentication no/' /etc/ssh/sshd_config
+sed -i -e '/^#MaxAuthTries/s/^.*$/MaxAuthTries 2/' /etc/ssh/sshd_config
 systemctl restart sshd
 systemctl restart fail2ban
 
