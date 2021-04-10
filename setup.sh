@@ -70,6 +70,7 @@ ufw -f enable
 
 cat <<EOF >> /etc/crontab
 * * * * * root /usr/local/bin/update-config.sh --hcloud-token ${TOKEN} --whitelisted-ips ${WHITELIST_S} ${FLOATING_IPS}
+0 0 * * 0 root export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get upgrade 
 EOF
 
 /usr/local/bin/update-config.sh --hcloud-token ${TOKEN} --whitelisted-ips ${WHITELIST_S} ${FLOATING_IPS}
